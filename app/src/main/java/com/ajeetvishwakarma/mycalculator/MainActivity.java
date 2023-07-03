@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-   Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnclear,btnequal,btnaddition,btnsubstract,btndivide,btndot,btnmultiply,btnmod,btnbackspace;
+   Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnclear,btnequal,btnaddition,btnsubstract,btndivide,btndot,btnmultiply,btnbackspace;
    TextView textDisplayText;
 
     double firstNumber,secondNumber;
@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         btn0 = findViewById(R.id.btn_0);
         btn1 = findViewById(R.id.btn_1);
@@ -197,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
         btnbackspace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    // Get the text from the text display.
+                    // Get the text from the text display
                     String text = textDisplayText.getText().toString();
 
                     // If the text is not empty, then delete the last character.
