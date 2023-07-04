@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-   Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnclear,btnequal,btnaddition,btnsubstract,btndivide,btndot,btnmultiply,btnbackspace;
-   TextView textDisplayText;
+   Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnclear,btnequal,btnaddition,btnsubstract,btndivide,btnmodulo,btndot,btnmultiply,btnbackspace;
+   TextView textInputDisplay,textResultDisplay;
 
     double firstNumber,secondNumber;
     String actionType;
@@ -34,86 +34,88 @@ public class MainActivity extends AppCompatActivity {
         btnsubstract = findViewById(R.id.btn_subtract);
         btndivide = findViewById(R.id.btn_divide);
         btnmultiply = findViewById(R.id.btn_multiply);
+        btnmodulo = findViewById(R.id.btn_modulo);
         btndot = findViewById(R.id.btn_dot);
         btnclear = findViewById(R.id.btn_clear);
         btnbackspace = findViewById(R.id.btn_backspace);
-        textDisplayText = findViewById(R.id.txt_result);
+        textResultDisplay = findViewById(R.id.txt_result);
+        textInputDisplay = findViewById(R.id.txt_input);
 
 
         btn0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textDisplayText.setText(textDisplayText.getText().toString() + "0");
+                textInputDisplay.setText(textInputDisplay.getText().toString() + "0");
             }
         });
 
          btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textDisplayText.setText(textDisplayText.getText().toString() + "1");
+                textInputDisplay.setText(textInputDisplay.getText().toString() + "1");
             }
         });
 
          btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textDisplayText.setText(textDisplayText.getText() + "2");
+                textInputDisplay.setText(textInputDisplay.getText() + "2");
             }
         });
 
          btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textDisplayText.setText(textDisplayText.getText() + "3");
+                textInputDisplay.setText(textInputDisplay.getText() + "3");
             }
         });
 
          btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textDisplayText.setText(textDisplayText.getText() + "4");
+                textInputDisplay.setText(textInputDisplay.getText() + "4");
             }
         });
 
          btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textDisplayText.setText(textDisplayText.getText() + "5");
+                textInputDisplay.setText(textInputDisplay.getText() + "5");
             }
         });
 
          btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textDisplayText.setText(textDisplayText.getText() + "6");
+                textInputDisplay.setText(textInputDisplay.getText() + "6");
             }
         });
 
          btn7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textDisplayText.setText(textDisplayText.getText() + "7");
+                textInputDisplay.setText(textInputDisplay.getText() + "7");
             }
         });
 
          btn8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textDisplayText.setText(textDisplayText.getText() + "8");
+                textInputDisplay.setText(textInputDisplay.getText() + "8");
             }
         });
 
          btn9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textDisplayText.setText(textDisplayText.getText() + "9");
+                textInputDisplay.setText(textInputDisplay.getText() + "9");
             }
         });
 
         btndot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textDisplayText.setText(textDisplayText.getText() + ".");
+                textInputDisplay.setText(textInputDisplay.getText() + ".");
 
 
             }
@@ -122,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         btnaddition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textDisplayText.setText(textDisplayText.getText() + "+");
+                textInputDisplay.setText(textInputDisplay.getText() + "+");
 
             }
         });
@@ -130,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         btnsubstract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textDisplayText.setText(textDisplayText.getText() + "-");
+                textInputDisplay.setText(textInputDisplay.getText() + "-");
 
             }
         });
@@ -138,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
            btnmultiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textDisplayText.setText(textDisplayText.getText() + "x");
+                textInputDisplay.setText(textInputDisplay.getText() + "×");
 
             }
         });
@@ -146,50 +148,61 @@ public class MainActivity extends AppCompatActivity {
         btndivide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textDisplayText.setText(textDisplayText.getText() + "÷");
+                textInputDisplay.setText(textInputDisplay.getText() + "÷");
 
             }
         });
 
+
+        //click equal button then perform arithmetic operation (-,*,/,+)
         btnequal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String number = textDisplayText.getText().toString();
+
+                // Get the text from the text display
+                String number = textInputDisplay.getText().toString();
+
                 if(number.contains("÷")){
                     String[] splitNumber = number.split("÷");
                     double firstNumber = Double.valueOf(splitNumber[0]);
                     double secondNumber = Double.valueOf(splitNumber[1]);
-                    textDisplayText.setText(String.valueOf(divide(firstNumber, secondNumber)));
+                    textResultDisplay.setText(String.valueOf(divide(firstNumber, secondNumber)));
 
-                } else if (number.contains("x")){
-                    String[] splitNumber = number.split("x");
+                } else if (number.contains("×")){
+                    String[] splitNumber = number.split("×");
                     double firstNumber = Double.valueOf(splitNumber[0]);
                     double secondNumber = Double.valueOf(splitNumber[1]);
-                    textDisplayText.setText(String.valueOf(multiply(firstNumber, secondNumber)));
+                    textResultDisplay.setText(String.valueOf(multiply(firstNumber, secondNumber)));
 
-                }
-                else if (number.contains("+")){
+                } else if (number.contains("+")){
                     String[] splitNumber = number.split("\\+");
                     double firstNumber = Double.valueOf(splitNumber[0]);
                     double secondNumber = Double.valueOf(splitNumber[1]);
-                    textDisplayText.setText(String.valueOf(add(firstNumber, secondNumber)));
+                    textResultDisplay.setText(String.valueOf(add(firstNumber, secondNumber)));
 
                 } else if (number.contains("-")){
                     String[] splitNumber = number.split("-");
                     double firstNumber = Double.valueOf(splitNumber[0]);
                     double secondNumber = Double.valueOf(splitNumber[1]);
-                    textDisplayText.setText(String.valueOf(subtract(firstNumber, secondNumber)));
-
+                    textResultDisplay.setText(String.valueOf(subtract(firstNumber, secondNumber)));
                 }
             }
+        });
+
+        btnmodulo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    firstNumber = Double.parseDouble(textInputDisplay.getText().toString());
+                    double modulo = firstNumber/100;
+                    textResultDisplay.setText(String.valueOf(modulo));
+                }
         });
 
         btnclear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textDisplayText.setText("");
-
-
+                textInputDisplay.setText("");
+                textResultDisplay.setText("");
             }
         });
 
@@ -197,20 +210,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     // Get the text from the text display
-                    String text = textDisplayText.getText().toString();
+                    String text = textInputDisplay.getText().toString();
+                    String text2 = textResultDisplay.getText().toString();
 
-                    // If the text is not empty, then delete the last character.
+                    // If the text is not empty, then delete the last character
                     if (!text.isEmpty()) {
                         text = text.substring(0, text.length() - 1);
-                    }
 
-                    // Set the text display to the new text.
-                    textDisplayText.setText(text);
+                    }if(!text2.isEmpty()){
+                    text2 = text2.substring(0, text2.length() - 1);
+
+                }
+
+                    // Set the text display to the new text
+                    textInputDisplay.setText(text);
+                    textResultDisplay.setText(text2);
                 }
 
         });
 
     }
+
+    //perform arithmetic operation
     double add(double a, double b){
         return a+b;
     }
@@ -227,10 +248,4 @@ public class MainActivity extends AppCompatActivity {
         return a/b;
 
     }
-
-    double modulo(double a, double b){
-        return a/b*100;
-    }
-
-
 }
