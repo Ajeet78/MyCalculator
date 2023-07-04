@@ -15,13 +15,13 @@ MyCalculator is a simple Android calculator application that allows users to per
 ![screenshot1](https://github.com/Ajeet78/MyCalculator/assets/74188571/cdc50451-bd73-42e3-b58e-bc3683114b9c)
 
 ## Requirements:
-Android 5.0 (API level 21) or higher
-Java 8
+2. Android 5.0 (API level 21) or higher
+1. Java 8
 
 ## Installation:
-Clone the GitHub repository.
-Open the project in Android Studio.
-Build and run the project
+1. Clone the GitHub repository.
+2. Open the project in Android Studio.
+3. Build and run the project
 
 ## License:
 The project is licensed under the MIT License.
